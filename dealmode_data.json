@@ -1,0 +1,51 @@
+{
+  "enquiries": [
+    {
+      "vessel": "BrightOil Gem",
+      "imo": "9537460",
+      "company": "Brightoil Marine, Singapore",
+      "type": "Container Ship",
+      "country": "sg",
+      "port": "SGAYC",
+      "eta_date": "2016-10-15",
+      "price_model": "Spot",
+      "grade": "RMK500(MFM)",
+      "quanity": "3000MT",
+      "due_time": "2016-07-15 00:00:00",
+      "comments": "the products must be homegeneous.",
+      "offers": [
+        {
+          "company": "Maersk",
+          "price": "USD250.80",
+          "user": {
+            "id": 3,
+            "name": "test",
+            "token": "",
+            "picture": ""
+          }
+        },
+        {
+          "company": "SENTEK MARINE & TRDG PL",
+          "price": "USD258.00",
+          "user": {
+            "id": 4,
+            "name": "ANDY",
+            "token": "",
+            "picture": ""
+          }
+        },
+        {
+          "company": "MARUBENI INT\"L PETROLEUM(S) PTE LTD",
+          "price": "USD190.00",
+          "user": {
+            "id": 4,
+            "name": "ALVIN",
+            "token": "",
+            "picture": ""
+          }
+        }
+      ]
+    }
+  ],
+  "messages": []
+}
