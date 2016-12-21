@@ -9,7 +9,9 @@ Promise.promisifyAll(fs);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   Promise.resolve(fs.readFileAsync('../dealmode_data.json', 'utf8'))
+    .then(JSON.parse)
     .then(function(result) {
+      console.log(typeof result);
       res.render('index', Object.assign({}, {title: "Deal Mode"}, result));
     });
 });

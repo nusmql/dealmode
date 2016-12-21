@@ -3,9 +3,15 @@ extends layout
 block content
   .container-fluid
     .row
-      .col-md-4
-        h1= title
-      .col-md-4
+      div(class="col-md-4" style="border-right: 1px solid;")
+        div(class="box sidebar")
+          div(class="box")
+            h1= title
+          include ./enquiry.pug
+      div(class="col-md-4" style="border-right: 1px solid;")
         test 2
       .col-md-4
         test 3
+  script(src="js/index.js")
+  script.
+    enquiries ="#{enquiries}"
