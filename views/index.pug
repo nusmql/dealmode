@@ -2,16 +2,23 @@ extends layout
 
 block content
   .container-fluid
-    .row
-      div(class="col-md-4" style="border-right: 1px solid;")
-        div(class="box sidebar")
+    div(class="row")
+      div(class="col-md-4")
+        div(class="box sidebar" style="border-bottom:1px solid #ddd;")
           div(class="box")
             h1= title
           include ./enquiry.pug
-      div(class="col-md-4" style="border-right: 1px solid;")
-        test 2
-      .col-md-4
-        test 3
+      div(class="col-md-3" style="border-left:1px solid #ddd;")
+          .box
+            div(class="row" style="border-bottom:1px solid #ddd;")
+              h2 Supplier Offers
+          - var offers = enquiry.offers;
+          each offer in offers
+            include ./offer.pug
+      div(class="col-md-5" style="border-left:1px solid #ddd;")
+        div(class="box" style="height: 800px;")
+          include ./chat.pug
+  script(src="/socket.io/socket.io.js")
   script(src="js/index.js")
   script.
     enquiries ="#{enquiries}"
