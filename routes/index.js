@@ -21,7 +21,7 @@ module.exports = function(io) {
 
   /* GET home page. */
   router.get('/', function(req, res, next) {
-    Promise.resolve(fs.readFileAsync('../dealmode_data.json', 'utf8'))
+    Promise.resolve(fs.readFileAsync('./dealmode_data.json', 'utf8'))
     .then(JSON.parse)
     .then(function(result) {
       // console.log(result.enquiries[0]);
