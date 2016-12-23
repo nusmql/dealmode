@@ -1,7 +1,7 @@
 // offer.pug
-
-div(class="box" data-user-id=`${offer.user.id}` class="offer-user")
-  div(class="row" style="border-bottom:1px solid #ddd;")
+- var bgcolor = index=== 0? '#D3D3D3' : '#FFFFFF'
+div(class="box" style="cursor:pointer;")
+  div(class="row offer-user" data-user-id=`${offer.user.id}` data-offer-id=`${offer.id}`  style=`border-bottom:1px solid #ddd; background: ${bgcolor};`)
     div(class="col-xs-4")
       img(
       data-src="holder.js/90x90"

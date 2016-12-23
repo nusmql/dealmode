@@ -13,7 +13,7 @@ block content
             div(class="row" style="border-bottom:1px solid #ddd;")
               h2 Supplier Offers
           - var offers = enquiry.offers;
-          each offer in offers
+          each offer, index in offers
             include ./offer.pug
       div(class="col-md-5" style="border-left:1px solid #ddd;")
         div(class="box" style="height: 800px;")
@@ -21,4 +21,6 @@ block content
   script(src="/socket.io/socket.io.js")
   script(src="js/index.js")
   script.
-    enquiries ="#{enquiries}"
+    enquiry = !{JSON.stringify(enquiry)};
+    key="#{chat.key}";
+    senderId="#{chat.sender_id}"

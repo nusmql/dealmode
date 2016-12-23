@@ -13,9 +13,22 @@ var app = express();
 var io = socket_io();
 app.io = io;
 
+io.on("connection", function(socket) {
+  console.log("a user connected!!!!");
 
-var index = require('./routes/index')(io);
-var seller = require('./routes/seller')(io);
+  socket.on('chat message', function(data) {
+    // console.log('message', data);
+    io.emit('chat message', data);
+  })
+
+  socket.on('disconnect', function() {
+    console.log("user disconnect");
+  })
+})
+
+
+var index = require('./routes/index');
+var seller = require('./routes/seller');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

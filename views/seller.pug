@@ -12,6 +12,8 @@ block content
         div(class="box" style="height: 800px;")
           include ./chat.pug
   script(src="/socket.io/socket.io.js")
-  //- script(src="js/seller.js")
+  script(src="js/seller.js")
   script.
-    enquiries ="#{offers}"
+    offer = !{JSON.stringify(offer)}
+    key="#{chat.key}"
+    senderId="#{chat.sender_id}"

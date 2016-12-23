@@ -1,7 +1,7 @@
 {
   "enquiries": [
     {
-      "id": 1,
+      "id": "1",
       "vessel": "BrightOil Gem",
       "imo": "9537460",
       "company": "Brightoil Marine, Singapore",
@@ -14,38 +14,39 @@
       "quanity": "3000MT",
       "due_time": "2016-07-15 00:00:00",
       "comments": "the products must be homegeneous.",
+      "user_id": "1",
       "offers": [
         {
-          "id": 1,
+          "id": "1",
           "company": "Maersk",
           "price": "USD250.80",
-          "user_id": 2,
+          "user_id": "2",
           "user": {
-            "id": 2,
+            "id": "2",
             "name": "test",
             "token": "",
             "picture": ""
           }
         },
         {
-          "id": 2,
+          "id": "2",
           "company": "SENTEK MARINE & TRDG PL",
           "price": "USD258.00",
-          "user_id": 3,
+          "user_id": "3",
           "user": {
-            "id": 3,
+            "id": "3",
             "name": "ANDY",
             "token": "",
             "picture": ""
           }
         },
         {
-          "id": 3,
+          "id": "3",
           "company": "MARUBENI INT'L PETROLEUM(S) PTE LTD",
           "price": "USD190.00",
-          "user_id": 4,
+          "user_id": "4",
           "user": {
-            "id": 4,
+            "id": "4",
             "name": "ALVIN",
             "token": "",
             "picture": ""

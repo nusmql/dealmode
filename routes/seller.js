@@ -1,43 +1,38 @@
-module.exports = function(io) {
-  var express = require('express');
-  var router = express.Router();
-  var fs = require('fs');
-  var url = require('url');
+var express = require('express');
+var router = express.Router();
+var fs = require('fs');
+var url = require('url');
 
-  var Promise = require('bluebird');
-  Promise.promisifyAll(fs);
+var Promise = require('bluebird');
+Promise.promisifyAll(fs);
 
-  io.on("connection", function(socket) {
-    console.log("a user connected!!!!");
-    io.sockets.emit('online', {})
-
-    socket.on('chat message', function(msg) {
-      console.log('message', msg);
-    })
-
-    socket.on('disconnect', function() {
-      console.log("user disconnect");
-    })
-  });
-
-  /* GET home page. */
-  router.get('/', function(req, res, next) {
-    var url_parts = url.parse(req.url, true);
-    var query = url_parts.query;
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  var url_parts = url.parse(req.url, true);
+  var query = url_parts.query;
 
     // default user_id = 2
     var user_id = ("id" in query)? query.id : 2;
 
     Promise.resolve(fs.readFileAsync('./public/data/seller.json', 'utf8'))
-      .then(JSON.parse)
-      .then(function(result) {
-        var offer = result.offers.filter(function(offer) {
-          return offer.user_id === user_id;
-        });
+    .then(JSON.parse)
+    .then(function(result) {
+      var offers = result.offers.filter(function(offer) {
+        return offer.user_id === user_id;
+      });
+      var offer = offers[0];
+
+      var chat = {
+        'msg': '',
+        'sender_id': offer.user_id,
+        'receiver_id': offer.enquiry.user_id,
+        'enquiry_id': offer.enquiry.id,
+        'offer_id': offer.id,
+        'key': offer.enquiry.id + '-' + offer.id
+      }
         // console.log(offer);
-        res.render('seller', Object.assign({}, {title: "Deal Mode"}, {offer: offer}));
+        res.render('seller', Object.assign({}, {title: "Deal Mode"}, {offer: offer, chat: chat}));
       });
   });
 
-  return router;
-}
+module.exports = router;
