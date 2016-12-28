@@ -52,6 +52,24 @@ $(".offer-user").on('click', function(event) {
   $("#messages").empty();
 })
 
+$(".enquiry").on('click', function(event){
+  event.stopPropagation();
+  var $this = $(this),
+      enquiryId = $this.data('enquiryId');
+
+  // set backgroud color
+  $('.enquiry').each(function(index, offerDiv) {
+      $(offerDiv).css('background-color', 'white');
+  });
+  $this.css('background-color', '#D3D3D3');
+
+  console.log("enquiry id : " ,$this.data('enquiryId'));
+  socket.emit('enquiry', {
+    "user_token": window.user_token,
+    "enquiry_id": enquiryId
+  });
+});
+
 
 socket.on('chat message', function(data) {
     // console.log(data);
@@ -61,3 +79,10 @@ socket.on('chat message', function(data) {
       $('#messages').append($('<li>').text(data.msg));
     }
 });
+
+socket.on('render offer', function(renderData) {
+  if(renderData.user_token === window.user_token) {
+    $('.offer').remove();
+    $('.offers').append(renderData.html);
+  }
+})

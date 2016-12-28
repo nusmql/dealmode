@@ -1,18 +1,18 @@
 // - enquiry.pug
-
-div(class="box" style="cursor:pointer;")
-  div(class="enquiry-basic" data-toggle="collapse" data-target="#enquiry-basic-id")
+- var bgcolor = index=== 0? '#D3D3D3' : '#FFFFFF'
+div(class="box enquiry" data-enquiry-id=`${enquiry.id}`  style=` cursor:pointer; background: ${bgcolor};`)
+  div( data-toggle="collapse" data-target=`#enquiry-basic-${enquiry.id}`)
     table(class="table")
       tr
         td
-          h3 05:43
+          h3 #{enquiry.time_left}
         td
-          b Brightoil Gem
+          b #{enquiry.vessel}
           br
-          |Grade: RMG360
+          |Grade: #{enquiry.grade}
           br
-          |Qty: 7000~75000MT
+          |Qty: #{enquiry.quanity}
         td(style="vertical-align: middle;")
-          span(class="badge" style="font-size: 15px;") 4
-  div(id="enquiry-basic-id" class="collapse")
+          span(class="badge" style="font-size: 15px;") #{enquiry.offer_count}
+  div(id=`enquiry-basic-${enquiry.id}` class="collapse")
     |Lorem ipsum sfsdlfjdsklfjl

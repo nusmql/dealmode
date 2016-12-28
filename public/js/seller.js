@@ -5,7 +5,7 @@ $(document).ready(function() {
 
 var socket = io();
 
-console.log(socket);
+// console.log(socket);
 
 $("form").submit(function(event) {
   event.preventDefault();

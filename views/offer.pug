@@ -1,7 +1,7 @@
 // offer.pug
 - var bgcolor = index=== 0? '#D3D3D3' : '#FFFFFF'
-div(class="box" style="cursor:pointer;")
-  div(class="row offer-user" data-user-id=`${offer.user.id}` data-offer-id=`${offer.id}`  style=`border-bottom:1px solid #ddd; background: ${bgcolor};`)
+div(class="box offer" style="cursor:pointer;")
+  div(class="row offer-user" data-user-id=`${offer.user_id}` data-offer-id=`${offer.id}`  style=`border-bottom:1px solid #ddd; background: ${bgcolor};`)
     div(class="col-xs-4")
       img(
       data-src="holder.js/90x90"
@@ -14,7 +14,7 @@ div(class="box" style="cursor:pointer;")
     div(class="col-xs-8 caption")
       span
         h5 #{offer.company}
-      span #{offer.user.name}
+      span `${offer.user.name}`
     div(class="col-xs-12")
       table(class="table table-borderless")
         tr

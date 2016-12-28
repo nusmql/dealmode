@@ -4,23 +4,23 @@ block content
   .container-fluid
     div(class="row")
       div(class="col-md-4")
-        div(class="box sidebar" style="border-bottom:1px solid #ddd;")
+        div(class="box sidebar enquiry" style="border-bottom:1px solid #ddd;")
           div(class="box")
             h1= title
-          include ./enquiry.pug
-      div(class="col-md-3" style="border-left:1px solid #ddd;")
+          each enquiry, index in enquiries
+            include ./enquiry.pug
+      div(class="col-md-3 offers" style="border-left:1px solid #ddd;")
           .box
             div(class="row" style="border-bottom:1px solid #ddd;")
               h2 Supplier Offers
-          - var offers = enquiry.offers;
-          each offer, index in offers
-            include ./offer.pug
-      div(class="col-md-5" style="border-left:1px solid #ddd;")
+          //- - var offers = enquiries[0].offers;
+          //- each offer, index in offers
+          //-   include ./offer.pug
+      div(class="col-md-5 chatroom" style="border-left:1px solid #ddd;")
         div(class="box" style="height: 800px;")
-          include ./chat.pug
+          //- include ./chat.pug
   script(src="/socket.io/socket.io.js")
   script(src="js/index.js")
   script.
-    enquiry = !{JSON.stringify(enquiry)};
-    key="#{chat.key}";
-    senderId="#{chat.sender_id}"
+    enquiry = !{JSON.stringify(enquiries[0])};
+    user_token = `!{user_token}`;

@@ -13,21 +13,21 @@ var app = express();
 var io = socket_io();
 app.io = io;
 
-io.on("connection", function(socket) {
-  console.log("a user connected!!!!");
+// io.on("connection", function(socket) {
+//   console.log("a user connected!!!!");
 
-  socket.on('chat message', function(data) {
-    // console.log('message', data);
-    io.emit('chat message', data);
-  })
+//   socket.on('chat message', function(data) {
+//     // console.log('message', data);
+//     io.emit('chat message', data);
+//   })
 
-  socket.on('disconnect', function() {
-    console.log("user disconnect");
-  })
-})
+//   socket.on('disconnect', function() {
+//     console.log("user disconnect");
+//   })
+// })
 
 
-var index = require('./routes/index');
+var index = require('./routes/index')(io);
 var seller = require('./routes/seller');
 
 // view engine setup

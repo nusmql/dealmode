@@ -14,6 +14,8 @@
       "quanity": "3000MT",
       "due_time": "2016-07-15 00:00:00",
       "comments": "the products must be homegeneous.",
+      "time_left": "04:30",
+      "offer_count": "2",
       "user_id": "1",
       "offers": [
         {
@@ -39,7 +41,27 @@
             "token": "",
             "picture": ""
           }
-        },
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "vessel": "BrightOil 230",
+      "imo": "88888888",
+      "company": "Brightoil Marine, Singapore",
+      "type": "Container Ship",
+      "country": "sg",
+      "port": "SGAYC",
+      "eta_date": "2016-12-15",
+      "price_model": "Spot",
+      "grade": "RMK500(MFM)",
+      "quanity": "5000MT",
+      "due_time": "2016-09-15 00:00:00",
+      "comments": "the products must be homegeneous!!!",
+      "time_left": "05:43",
+      "offer_count": "1",
+      "user_id": "1",
+      "offers": [
         {
           "id": "3",
           "company": "MARUBENI INT'L PETROLEUM(S) PTE LTD",
