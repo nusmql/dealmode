@@ -1,15 +1,15 @@
 // chat.pug
 
-
-.row
-  ul(id="messages")
-.row(class="col-sm-12" style="position: relative; top:10%; transform: translateY(-10%); ")
-  form(id="chating" action="", method="post")
-    div(class="form-group row")
-      div(class="col-sm-10")
-        input(id="m" type="text" class="form-control" autocomplete="off")
-        input(id="receiver_id" type="hidden" value=`${chat.receiver_id}`)
-        input(id="sender_id" type="hidden" value=`${chat.sender_id}`)
-        input(id="enquiry_id" type="hidden" value=`${chat.enquiry_id}`)
-        input(id="offer_id" type="hidden" value=`${chat.offer_id}`)
-      button(class="btn btn-primary col-sm-2") Send
+div(class="box" style="margin-top:50px;")
+  .row
+    ul(id="messages")
+  .row(class="col-sm-12" style="position: relative; top:10%; transform: translateY(-10%); margin-top:10px;")
+    form(id="chating" action="", method="post")
+      div(class="form-group row")
+        div(class="col-sm-10")
+          input(id="m" type="text" class="form-control" autocomplete="off")
+          input(id="receiver_id" type="hidden" value=`${chat.receiver_id}`)
+          input(id="sender_id" type="hidden" value=`${chat.sender_id}`)
+          input(id="enquiry_id" type="hidden" value=`${chat.enquiry_id}`)
+          input(id="offer_id" type="hidden" value=`${chat.offer_id}`)
+        button(class="btn btn-primary col-sm-2") Send

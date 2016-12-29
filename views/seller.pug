@@ -7,6 +7,7 @@ block content
         div(class="box sidebar" style="border-bottom:1px solid #ddd;")
           div(class="box")
             h1= title
+          - var enquiry = offer.enquiry
           include ./enquiry.pug
       div(class="col-md-7" style="border-left:1px solid #ddd;")
         div(class="box" style="height: 800px;")
@@ -16,4 +17,4 @@ block content
   script.
     offer = !{JSON.stringify(offer)}
     key="#{chat.key}"
-    senderId="#{chat.sender_id}"
+    senderId="#{user_id}"

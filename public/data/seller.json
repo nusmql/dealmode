@@ -34,7 +34,7 @@
       "company": "SENTEK MARINE & TRDG PL",
       "price": "USD258.00",
       "user_id": "3",
-      "enquiry_id": "1",
+      "enquiry_id": "2",
       "user": {
         "id": "3",
         "name": "ANDY",
@@ -71,18 +71,18 @@
         "picture": ""
       },
       "enquiry": {
-        "id": "1",
-        "vessel": "BrightOil Gem",
-        "imo": "9537460",
+        "id": "2",
+        "vessel": "BrightOil 230",
+        "imo": "88888888",
         "company": "Brightoil Marine, Singapore",
         "type": "Container Ship",
         "country": "sg",
         "port": "SGAYC",
-        "eta_date": "2016-10-15",
+        "eta_date": "2016-12-15",
         "price_model": "Spot",
         "grade": "RMK500(MFM)",
-        "quanity": "3000MT",
-        "due_time": "2016-07-15 00:00:00",
+        "quanity": "5000MT",
+        "due_time": "2016-09-15 00:00:00",
         "comments": "the products must be homegeneous.",
         "user_id": "1"
       }

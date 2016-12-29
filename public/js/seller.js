@@ -32,9 +32,9 @@ $("form").submit(function(event) {
 })
 
 socket.on('chat message', function(data) {
-    console.log(data);
-    console.log(data.key);
-    console.log(window.key);
+    // console.log(data);
+    // console.log(data.key);
+    // console.log(window.key);
     if(window.key === data.key && window.senderId !== data.sender_id) {
       $('#messages').append($('<li>').text(data.msg));
     }

@@ -8,11 +8,13 @@ module.exports = (io) => {
   var Promise = require('bluebird');
   Promise.promisifyAll(fs);
   var crypto = require('crypto');
+  var user_id = '1';
 
   var d;
   const offerPugTemplate = pug.compileFile('./views/offer.pug');
 
-  var user_token = crypto.createHash('md5').update('bbp' + '1').digest('hex');
+  // simulate the user login cookie token
+  var user_token = crypto.createHash('md5').update('bbp' + user_id).digest('hex');
 
 
   io.on("connection", function(socket) {
@@ -43,6 +45,37 @@ module.exports = (io) => {
 
       socket.emit('render offer', {html: renderOffer, user_token: user_token});
 
+    });
+
+    socket.on('offer', function(data) {
+      if(data.action === 'RENDER_CHATROOM') {
+        // prepare chat data
+        // fetch chat history data
+        // render pug template
+        if(data.offer !== 'undefined') {
+          var offer = data.offer;
+          var chat = {
+            'msg': '',
+            'sender_id': user_id,
+            'receiver_id': offer.user_id,
+            'enquiry_id': offer.enquiry_id,
+            'offer_id': offer.id,
+            'key': offer.enquiry_id + '-' + offer.id // need generate with md5 like token
+          };
+
+          var chatroomHtml = pug.renderFile('./views/chat.pug', {
+            offer: offer,
+            chat: chat
+          });
+
+          socket.emit('render chatroom', {
+            html: chatroomHtml,
+            key: chat.key,
+            user_token: user_token
+          });
+
+        }
+      }
     })
 
     socket.on('disconnect', function() {
@@ -55,20 +88,11 @@ module.exports = (io) => {
     Promise.resolve(fs.readFileAsync('./public/data/buyer.json', 'utf8'))
     .then(JSON.parse)
     .then(function(result) {
-      // console.log(result.enquiries[0]);
-      // var enquiry = result.enquiries[0];
-      // var chat = {
-      //   'msg': '',
-      //   'sender_id': enquiry.user_id,
-      //   'receiver_id': enquiry.offers[0].user_id,
-      //   'enquiry_id': enquiry.id,
-      //   'offer_id': enquiry.offers[0].id,
-      //   'key': enquiry.id + '-' + enquiry.offers[0].id
-      // }
 
+      // assign to globle vairable
       d = result;
 
-      res.render('index', Object.assign({}, {title: "Deal Mode", user_token: user_token}, {enquiries: result.enquiries}));
+      res.render('index', Object.assign({}, {title: "Deal Mode", user_token: user_token, user_id: user_id}, {enquiries: result.enquiries}));
     });
   });
   return router;

@@ -23,6 +23,7 @@
           "company": "Maersk",
           "price": "USD250.80",
           "user_id": "2",
+          "enquiry_id": "1",
           "user": {
             "id": "2",
             "name": "test",
@@ -35,6 +36,7 @@
           "company": "SENTEK MARINE & TRDG PL",
           "price": "USD258.00",
           "user_id": "3",
+          "enquiry_id": "1",
           "user": {
             "id": "3",
             "name": "ANDY",
@@ -67,6 +69,7 @@
           "company": "MARUBENI INT'L PETROLEUM(S) PTE LTD",
           "price": "USD190.00",
           "user_id": "4",
+          "enquiry_id": "2",
           "user": {
             "id": "4",
             "name": "ALVIN",

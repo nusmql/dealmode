@@ -28,7 +28,7 @@ app.io = io;
 
 
 var index = require('./routes/index')(io);
-var seller = require('./routes/seller');
+var seller = require('./routes/seller')(io);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -4,7 +4,7 @@ block content
   .container-fluid
     div(class="row")
       div(class="col-md-4")
-        div(class="box sidebar enquiry" style="border-bottom:1px solid #ddd;")
+        div(class="box sidebar enquiries" style="border-bottom:1px solid #ddd;")
           div(class="box")
             h1= title
           each enquiry, index in enquiries
@@ -16,11 +16,11 @@ block content
           //- - var offers = enquiries[0].offers;
           //- each offer, index in offers
           //-   include ./offer.pug
-      div(class="col-md-5 chatroom" style="border-left:1px solid #ddd;")
-        div(class="box" style="height: 800px;")
-          //- include ./chat.pug
+      div(class="col-md-5 chatroom" style="border-left:1px solid #ddd; display:none;")
+        //- include ./chat.pug
   script(src="/socket.io/socket.io.js")
   script(src="js/index.js")
   script.
     enquiry = !{JSON.stringify(enquiries[0])};
     user_token = `!{user_token}`;
+    senderId = `!{user_id}`;

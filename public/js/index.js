@@ -7,8 +7,9 @@ $(document).ready(function() {
 var socket = io();
 
 
-$("form").submit(function(event) {
+$(document).on('submit', '#chating', function(event) {
   event.preventDefault();
+
   var sender_id = $("#sender_id").val(),
       msg = "[From UserId " + sender_id + "]: " + $('#m').val(),
       enquiry_id = $("#enquiry_id").val(),
@@ -31,25 +32,25 @@ $("form").submit(function(event) {
 });
 
 
-$(".offer-user").on('click', function(event) {
+$(document).on('click', '.offer-user', function(event) {
   event.preventDefault();
   var $this = $(this),
-      userId = $(this).data('userId'),
-      offerId = $(this).data('offerId');
+      offer = $this.data('offer');
 
-  window.key = enquiry.id + '-' + offerId;
-  // console.log(window.key);
+  window.key = offer.enquiry_id + '-' + offer.id;
 
   // set backgroud color
   $('.offer-user').each(function(index, offerDiv) {
-      console.log(offerDiv);
+      // console.log(offerDiv);
       $(offerDiv).css('background-color', 'white');
   });
   $this.css('background-color', '#D3D3D3');
 
-  $("#receiver_id").val(userId);
-  $("#offer_id").val(offerId);
-  $("#messages").empty();
+  // request to render chatroom
+  socket.emit('offer', {
+    offer: offer,
+    action: 'RENDER_CHATROOM'
+  });
 })
 
 $(".enquiry").on('click', function(event){
@@ -63,7 +64,9 @@ $(".enquiry").on('click', function(event){
   });
   $this.css('background-color', '#D3D3D3');
 
-  console.log("enquiry id : " ,$this.data('enquiryId'));
+  // hide chatroom
+  $('.chatroom').hide();
+
   socket.emit('enquiry', {
     "user_token": window.user_token,
     "enquiry_id": enquiryId
@@ -85,4 +88,15 @@ socket.on('render offer', function(renderData) {
     $('.offer').remove();
     $('.offers').append(renderData.html);
   }
-})
+});
+
+socket.on('render chatroom', function(data) {
+
+  // console.log(data);
+  if(data.user_token === window.user_token && data.key === window.key) {
+    console.log("render pass!");
+    $('.chatroom').empty();
+    $('.chatroom').append(data.html);
+    $('.chatroom').show();
+  }
+});
