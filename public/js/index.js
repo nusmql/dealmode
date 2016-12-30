@@ -4,7 +4,7 @@ $(document).ready(function() {
   // window.enquiry = JSON.parse(enquiry);
 });
 
-var socket = io();
+var socket = io('/index');
 
 
 $(document).on('submit', '#chating', function(event) {

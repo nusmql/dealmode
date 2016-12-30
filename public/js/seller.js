@@ -3,7 +3,7 @@ $(document).ready(function() {
   console.log("document is ready.");
 });
 
-var socket = io();
+var socket = io('/seller');
 
 // console.log(socket);
 

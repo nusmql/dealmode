@@ -9,19 +9,21 @@ module.exports = function(io) {
   Promise.promisifyAll(fs);
   var user_token;
 
-  // // handle socket.io event
-  // io.on("connection", function(socket) {
-  //   console.log("a seller connected!!!!");
+  var seller = io.of('/seller');
 
-  //   socket.on('chat message', function(data) {
-  //   // console.log('message', data);
-  //   io.emit('chat message', data);
-  // })
+  // handle socket.io event
+  seller.on("connection", function(socket) {
+    console.log("a seller connected!!!!");
 
-  //   socket.on('disconnect', function() {
-  //     console.log("seller disconnect");
-  //   })
-  // })
+    socket.on('chat message', function(data) {
+    // console.log('message', data);
+    io.of('/index').emit('chat message', data);
+  })
+
+    socket.on('disconnect', function() {
+      console.log("seller disconnect");
+    })
+  })
 
 
   /* GET home page. */

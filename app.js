@@ -1,30 +1,15 @@
 var express = require('express');
+var app = express();
+var http = require('http').Server(app);
+var port = process.env.PORT || 3000;
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var socket_io = require('socket.io');
+var io = require('socket.io').listen(http);
 
-
-var app = express();
-
-// socket.io
-var io = socket_io();
-app.io = io;
-
-// io.on("connection", function(socket) {
-//   console.log("a user connected!!!!");
-
-//   socket.on('chat message', function(data) {
-//     // console.log('message', data);
-//     io.emit('chat message', data);
-//   })
-
-//   socket.on('disconnect', function() {
-//     console.log("user disconnect");
-//   })
-// })
 
 
 var index = require('./routes/index')(io);
@@ -62,6 +47,10 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+});
+
+http.listen(3000, function() {
+  console.log('listening on *:3000');
 });
 
 module.exports = app;
